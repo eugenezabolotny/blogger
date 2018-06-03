@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Blogger{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'main-view' %}">Blogger</a>
+            {% if user.is_authenticated %}
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle btn btn-outline-primary px-4 ml-4"
+                       href="#"
+                       id="navbarDropdownMenuLink"
+                       data-toggle="dropdown"
+                       aria-haspopup="true"
+                       aria-expanded="false">
+                        <i class="fa fa-user-circle mr-2" aria-hidden="true"></i>
+                        <span>{{ user.username }}</span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a href="{% url 'users-view' %}" class="dropdown-item">
+                            <i class="fa fa-users mr-2" aria-hidden="true"></i>
+                            <span>Bloggers</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fa fa-comment-o mr-2" aria-hidden="true"></i>
+                            <span>New post</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="fa fa-comments-o mr-2" aria-hidden="true"></i>
+                            <span>My posts</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{% url 'logout-view' %}" class="dropdown-item">
+                            <i class="fa fa-sign-out mr-2" aria-hidden="true"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </div>
+            {% else %}
+                <a href="{% url 'login-view' %}" class="btn btn-outline-primary px-4 ml-4">
+                    <i class="fa fa-sign-in mr-2" aria-hidden="true"></i>
+                    <span>Login</span>
+                </a>
+            {% endif %}
+        </div>
+    </nav>
+
+    {% if user.is_authenticated %}
+        {% block content %}
+            <div class="container">
+                <h1 class="my-5">Welcome to the Blogger platform</h1>
+            </div>
+        {% endblock content %}
+    {% endif %}
+{% endblock %}

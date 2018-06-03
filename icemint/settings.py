@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blogger.apps.BloggerConfig',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
@@ -77,14 +78,14 @@ WSGI_APPLICATION = 'icemint.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'blogger',
-        'USER': 'blogger',
-        'PASSWORD': 'blogger',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'blogger',
+        # 'USER': 'blogger',
+        # 'PASSWORD': 'blogger',
+        # 'HOST': '127.0.0.1',
+        # 'PORT': '5432',
     }
 }
 

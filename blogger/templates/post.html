@@ -1,0 +1,25 @@
+{% extends 'body.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="my-5">Post #{{ post_id }}</h1>
+        {% if post %}
+            {% if post.is_posted %}
+                <div class="card mb-5">
+                    <div class="card-header">{{ post.author }}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ post.title }}</h5>
+                        <p class="card-text" style="white-space: pre-line">{{ post.text }}</p>
+                    </div>
+                    <div class="card-footer text-muted d-flex">
+                        <div class="mr-4">Created at: {{ post.created_at }}</div>
+                        <div>Updated at: {{ post.updated_at }}</div>
+                    </div>
+                </div>
+            {% else %}
+                <p>Post with id #{{ post_id }} <b>not published</b> yet.</p>
+            {% endif %}
+        {% else %}
+            <p>There is <b>no</b> created post with id #{{ post_id }}.</p>
+        {% endif %}</div>
+{% endblock %}
