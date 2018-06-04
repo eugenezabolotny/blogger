@@ -25,4 +25,6 @@ urlpatterns = [
     path('users/', views.UsersView.as_view(), name='users-view'),
     path('users/<int:user_id>/', views.UserPostsView.as_view(), name='user-posts-view'),
     path('<int:post_id>/', views.PostView.as_view(), name='post-view'),
+    path('create/', views.NewPostView.as_view(), name='new-post-view'),
+    path('<int:post_id>/update/', views.EditPostView.as_view(), name='edit-post-view'),
 ]

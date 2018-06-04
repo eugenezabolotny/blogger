@@ -23,11 +23,11 @@
                             <span>Bloggers</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">
+                        <a href="{% url 'new-post-view' %}" class="dropdown-item">
                             <i class="fa fa-comment-o mr-2" aria-hidden="true"></i>
                             <span>New post</span>
                         </a>
-                        <a href="#" class="dropdown-item">
+                        <a href="{% url 'user-posts-view' user.id %}" class="dropdown-item">
                             <i class="fa fa-comments-o mr-2" aria-hidden="true"></i>
                             <span>My posts</span>
                         </a>
@@ -48,10 +48,11 @@
     </nav>
 
     {% if user.is_authenticated %}
-        {% block content %}
-            <div class="container">
-                <h1 class="my-5">Welcome to the Blogger platform</h1>
-            </div>
-        {% endblock content %}
+        {% block content %}{% endblock content %}
+    {% else %}
+        <div class="container">
+            <div class="py-5"></div>
+            <h1 class="my-5 display-2 text-center">Blogger platform</h1>
+        </div>
     {% endif %}
-{% endblock %}
+{% endblock body %}

@@ -1,0 +1,27 @@
+{% extends 'body.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="my-5">Bloggers list</h1>
+        <form method="POST" class="post-form">
+            {% csrf_token %}
+            {# {{ form.as_p }} #}
+            {% for field in form %}
+                <div class="form-group">
+                    {% if field.name == 'title' %}
+                        <h5>{{ field.label }}:</h5>
+                        {{ field|add_class:"form-control" }}
+                    {% elif field.name == 'text' %}
+                        <h5>{{ field.label }}:</h5>
+                        {{ field|add_class:"form-control" }}
+                    {% elif field.name == 'is_posted' %}
+                        {{ field|add_class:"form-control d-inline ml-2 mr-1"|attr:"style: width: inherit" }}
+                        <h5 class="d-inline">{{ field.label }}</h5>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+    </div>
+{% endblock %}

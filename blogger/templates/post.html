@@ -4,9 +4,21 @@
     <div class="container">
         <h1 class="my-5">Post #{{ post_id }}</h1>
         {% if post %}
-            {% if post.is_posted %}
+            {% if post.is_posted or owner %}
                 <div class="card mb-5">
-                    <div class="card-header">{{ post.author }}</div>
+                    <div class="card-header d-flex align-items-center py-2">
+                        {{ post.author }}
+                        {% if not post.is_posted %}
+                            <span class="badge badge-secondary ml-2">Not published</span>
+                        {% endif %}
+                        {% if owner %}
+                            <a href="{% url 'edit-post-view' post.id %}"
+                               class="btn btn-primary btn-sm ml-auto">
+                                <i class="fa fa-edit mr-1"></i>
+                                <span>Edit</span>
+                            </a>
+                        {% endif %}
+                    </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ post.title }}</h5>
                         <p class="card-text" style="white-space: pre-line">{{ post.text }}</p>
